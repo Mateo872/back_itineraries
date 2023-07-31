@@ -80,9 +80,11 @@ const itinerariesControllers = {
       description,
       price,
       time,
-      hashtag,
       idCity,
       likes,
+      language,
+      years,
+      favorite,
     } = req.body.data;
     let itinerary;
     let error = null;
@@ -102,11 +104,11 @@ const itinerariesControllers = {
           description: description,
           price: price,
           time: time,
-          hashtag: hashtag,
           idCity: idCity,
           likes: likes,
           language: language,
           years: years,
+          favorite: favorite,
         }).save();
       } else {
         error = `this itinerary already exists in the database with the ID: ${verifyItineraryExist[0]._id}}`;
@@ -140,11 +142,11 @@ const itinerariesControllers = {
             description: itinerary.description,
             price: itinerary.price,
             time: itinerary.time,
-            hashtag: itinerary.hashtag,
             idCity: itinerary.idCity,
             likes: itinerary.likes,
             language: itinerary.language,
             years: itinerary.years,
+            favorite: itinerary.favorite,
           };
           await new Itinerary(dataItinerary).save();
           itineraries.push(dataItinerary);
